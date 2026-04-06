@@ -21,5 +21,9 @@
     <Button fx:id="joinBtn" text="Join Activity"
             layoutX="450" layoutY="300"
             onAction="#handleJoinActivity"/>
+            
+    <Button fx:id="editBtn" text="Edit Activity"
+            layoutX="315" layoutY="300"
+            onAction="#handleEditActivity"/>
 
 </AnchorPane>

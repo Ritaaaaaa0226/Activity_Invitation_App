@@ -3,11 +3,15 @@ package application;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
 
 public class CreateInvitationController {
 
     private InvitationManager manager;
-
+    
+    @FXML private TextField  orgField;
+    @FXML private DatePicker datePicker;
     @FXML private TextField startHField;
     @FXML private TextField startMField;
     @FXML private TextField endHField;
@@ -38,6 +42,25 @@ public class CreateInvitationController {
     @FXML
     private void handleSave() {
         try {
+        	 
+      
+            String organizer = orgField.getText();
+            if (organizer == null || organizer.trim().isEmpty()) {
+                showError("Please enter organizer name.");
+                return;
+            }
+            if (!organizer.matches("[a-zA-Z ]+")) {
+                showError("Organizer name must contain letters only.");
+                return;
+            }
+            
+            LocalDate date = datePicker.getValue();
+            if (date == null) {
+                showError("Please select a date.");
+                return;
+            }
+            
+            
             int startH = Integer.parseInt(startHField.getText());
             int startM = Integer.parseInt(startMField.getText());
             int endH = Integer.parseInt(endHField.getText());
@@ -49,7 +72,7 @@ public class CreateInvitationController {
             String gender = genderBox.getValue();
 
             //invitation+pin created
-            Invitation invitation = new Invitation(startH, startM, endH, endM, count, sport, location, gender);
+            Invitation invitation = new Invitation(organizer,date.toString(),startH, startM, endH, endM, count, sport, location, gender);
    
             manager.addInvitation(invitation);
 

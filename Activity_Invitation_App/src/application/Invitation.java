@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Invitation {
 	
+	private String name;
+	private String date;
 	private int startH;
 	private int startM;
 	private int endH;
@@ -14,7 +16,7 @@ public class Invitation {
 	private String gender;
 	private String pin;
 
-	public Invitation(int startH, int startM, int endH, int endM, int count, String sport, String location,
+	public Invitation( String name, String date, int startH, int startM, int endH, int endM, int count, String sport, String location,
 			String gender) {
 
 		if (!isValidTime(startH, startM) || !isValidTime(endH, endM)) {
@@ -28,7 +30,9 @@ public class Invitation {
 		if (endH * 60 + endM <= startH * 60 + startM) {
 		    throw new IllegalArgumentException("End time must be after start time");
 		}
-
+		
+        this.name = name;
+		this.date = date;
 		this.startH = startH;
 		this.startM = startM;
 		this.endH = endH;
@@ -40,7 +44,7 @@ public class Invitation {
 		this.pin = generatePIN();
 
 	}
-
+	
 	private boolean isValidTime(int h, int m) {
 		if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
 			return true;
@@ -89,7 +93,15 @@ public class Invitation {
                 return "O";
         }
     }
-
+	
+	public String getOrganizer() {
+	    return name;
+	}
+	
+	public String getDate() {
+	    return date;
+	}
+	
 	public int getStartH() {
 		return startH;
 	}
