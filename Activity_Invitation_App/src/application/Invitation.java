@@ -142,4 +142,43 @@ public class Invitation {
         return String.format("%02d:%02d ~ %02d:%02d", startH, startM, endH, endM);
     }
 	
+//	public void setOrganizer(String organizer) {
+//	    this.organizer = organizer;
+//	}
+
+	public void setDate(String date) {
+	    this.date = date;
+	}
+
+	public void setStartH(int startH) {
+	    this.startH = startH;
+	}
+
+	public void setStartM(int startM) {
+	    this.startM = startM;
+	}
+
+	public void setEndH(int endH) {
+	    this.endH = endH;
+	}
+
+	public void setEndM(int endM) {
+	    this.endM = endM;
+	}
+
+	public void setCount(int count) {
+	    this.count = count;
+	}
+
+	public void setSport(String sport) {
+	    this.sport = sport;
+	}
+
+	public void setLocation(String location) {
+	    this.location = location;
+	}
+
+	public void setGender(String gender) {
+	    this.gender = gender;
+	}
 }
